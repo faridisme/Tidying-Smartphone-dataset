@@ -40,9 +40,6 @@ Activitylabels <- read.table(activityfile, header=FALSE);
 Activitylabels <- Activitylabels[order(Activitylabels$V1),];
 df$Activity <- factor(df$Activity, labels = Activitylabels$V2, levels = Activitylabels$V1 )
 
-#output tidy data set;
-write.table(df,file="dataset.txt") 
-
 tidydf <- df %>% group_by(Subject, Activity) %>% 
   summarise_all(funs(mean));
 
